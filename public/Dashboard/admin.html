@@ -32,18 +32,14 @@
     <aside id="content" class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
             <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">DASHBOARD</a>
-            <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+            <a href="http://wa.me/6281236715460?text=hallo+websitenya+mengalami+error" class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> New Report
-            </button>
+            </a>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
             <a href="/Dashboard/admin.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fa-solid fa-house mr-3"></i>
                 Dashboard
-            </a>
-            <a href="/Dashboard/statistic.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fa-solid fa-chart-simple mr-3"></i>
-                Statistic
             </a>
         </nav>
     </aside>
@@ -80,10 +76,6 @@
                     <img src="/img/home.webp" width="30px" height="auto" class="mr-3" alt="">
                      Dashboard
                  </a>
-                 <a href="" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                     <img src="/img/statistik.webp" width="30px" height="auto" class="mr-3" alt="">
-                     Statistik
-                 </a>
             </nav>
             
         </header>
@@ -92,6 +84,10 @@
             <main class="w-full flex-grow p-6">
                 <!-- <img src="/Sources/logo.webp" width="70px" height="auto" class="mr-3" alt=""> -->
                 <h1 class="text-3xl text-black pb-6">Hello Admin !</h1>
+                <div class="mb-5">
+                    <button type="button" id="open-presensi" class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Open Attendance</button>
+                    <button type="button" id="delete-time" class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Close Attendance</button>
+                </div>
                 <!-- LIS OF ATTENDANCE -->
                 <div class="w-full mt-3">
                     <p class="text-xl pb-3 flex items-center">
@@ -108,9 +104,8 @@
                         <i class="fas fa-list mr-3"></i> Attendance List
                     </p>
                     <div class="mb-5">
-                        <button type="button" id="open-presensi" class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Open Attendance</button>
-                        <button type="button" id="delete-time" class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Close Attendance</button>
                         <button type="button" id="add-location" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Settings location</button>
+                        <button type="button" id="show-location" class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Show location</button>
                     </div>
                     <div class="mb-5">
                         <button type="button" id="download" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Download</button>
@@ -175,6 +170,39 @@ function hideModal() {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
 
     <script>
+        document.getElementById("show-location").addEventListener("click", function () {
+    const locations = [
+        { name: "Fakultas Bahasa & Seni ", latitude: "-8.099241", longitude: "115.107616" },
+        { name: "Student Center Undiksha", latitude: "-8.119348", longitude: "115.087153" }
+    ];
+    
+    let locationHtml = locations.map(loc => `
+        <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-4">
+            <p class="text-lg font-semibold">${loc.name}</p>
+            <p class="text-sm text-gray-700">Latitude: ${loc.latitude}</p>
+            <p class="text-sm text-gray-700">Longitude: ${loc.longitude}</p>
+            <button class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-lat="${loc.latitude}" data-lon="${loc.longitude}">Salin</button>
+        </div>
+    `).join('');
+    
+    Swal.fire({
+        title: "Detail Lokasi",
+        html: `<div class="space-y-4">${locationHtml}</div>`,
+        showConfirmButton: false,
+        didOpen: () => {
+            document.querySelectorAll("button[data-lat]").forEach(button => {
+                button.addEventListener("click", function () {
+                    const textToCopy = `${this.dataset.lat}, ${this.dataset.lon}`;
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        Swal.fire("Disalin!", "Latitude dan Longitude telah disalin ke clipboard.", "success");
+                    }).catch(err => {
+                        Swal.fire("Gagal", "Gagal menyalin teks.", "error");
+                    });
+                });
+            });
+        }
+    });
+});
         var chartOne = document.getElementById('chartOne');
         var myChart = new Chart(chartOne, {
             type: 'bar',

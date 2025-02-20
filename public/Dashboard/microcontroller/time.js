@@ -187,7 +187,7 @@ async function handleOpenPresensi() {
 }
 async function handleAddLocation() {
     const { value: formValues } = await Swal.fire({
-        title: 'Pengaturan Lokasi Presensi',
+        title: 'Setting Lokasi Presensi',
         html: `
             <div class="mb-3">
                 <label for="latitude" class="block">Latitude:</label>
@@ -198,6 +198,10 @@ async function handleAddLocation() {
                 <input id="longitude" class="swal2-input" type="number" step="any" placeholder="Contoh: 115.107613">
             </div>
         `,
+        customClass: {
+            confirmButton: 'bg-green-500 me-3 hover:bg-green-600 text-white font-semibold px-4 sm:px-6 py-2 rounded-lg transition-colors duration-200 text-sm sm:text-base',
+            cancelButton: 'bg-red-500 hover:bg-red-600 text-white font-semibold px-4 sm:px-6 py-2 rounded-lg transition-colors duration-200 text-sm sm:text-base'
+          },
         focusConfirm: false,
         preConfirm: () => ({
             latitude: document.getElementById('latitude').value,

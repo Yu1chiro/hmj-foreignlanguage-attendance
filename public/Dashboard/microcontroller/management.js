@@ -437,7 +437,7 @@ function downloadExcel(data) {
     XLSX.utils.book_append_sheet(wb, ws, "Data attendance");
     
     // Write file with properties to ensure styles are preserved
-    XLSX.writeFile(wb, "attendance_Pemira_2024.xlsx", { 
+    XLSX.writeFile(wb, "attendance_2025.xlsx", { 
       bookType: 'xlsx',
       bookSST: false,
       type: 'binary',
