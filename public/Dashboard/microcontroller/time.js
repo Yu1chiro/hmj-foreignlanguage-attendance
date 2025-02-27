@@ -126,9 +126,16 @@ async function handleDeleteCountdown() {
         const formPresensiActive = document.getElementById('form-presensi-active');
         if (formPresensiActive) {
             formPresensiActive.classList.add('hidden');
+            
         }
 
-        Swal.fire('Presensi Ditutup', 'success');
+         // Tampilkan notifikasi sukses
+         Swal.fire({
+            title: 'Presensi Ditutup',
+            icon: 'success',
+            confirmButtonColor: 'green'
+        });
+        
     } catch (error) {
         console.error('Error deleting countdown:', error);
         Swal.fire('Error', 'Gagal menghapus countdown', 'error');

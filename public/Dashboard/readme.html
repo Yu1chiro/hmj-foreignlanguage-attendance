@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presensi Realtime Location</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-6">
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold mb-4 text-start">Attendance Realtime Location</h1>
+            <p class="mb-6">Presensi ini menentukan kehadiran berdasarkan lokasi yang telah ditetapkan. Ada dua form: pertama untuk presensi awal, dan kedua untuk presensi terlambat jika waktu habis.</p>
+            
+            <h3 class="text-xl font-semibold mb-3">Proses Presensi:</h3>
+            <ul class="list-disc pl-6 mb-6">
+                <li>Panitia mengisi form awal dengan nama, NIM, semester, dan jabatan.</li>
+                <li>Wajib mengaktifkan akses lokasi agar sistem bisa mendeteksi kehadiran.</li>
+                <li>Hadir jika berada dalam lokasi yang ditentukan, tidak hadir jika di luar lokasi.</li>
+                <li>Jika waktu habis, form terlambat akan muncul untuk presensi lanjutan.</li>
+            </ul>
+            
+            <h3 class="text-xl font-semibold mb-3">Fitur Admin Panel:</h3>
+            <div class="space-y-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>🔓 Open Presensi:</strong> Membuka sesi presensi, mengatur waktu mulai dan akhir. Pastikan waktu yang diinput sudah sesuai.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>🔒 Close Presensi:</strong> Menutup sesi presensi. Pastikan semua panitia sudah melakukan presensi sebelum menutup sesi.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>📍 Settings Location:</strong> Mengatur koordinat lokasi presensi (latitude & longitude). Pastikan akurasi koordinat.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>🔍 Show Location:</strong> Melihat koordinat lokasi yang sudah disiapkan untuk verifikasi lokasi acara.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>📂 Download Data:</strong> Mengunduh semua data presensi. Jika ada dua sesi, pastikan unduh data sesi pertama sebelum reset.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>⚠️ Reset Data:</strong> Menghapus semua data presensi. Pastikan data sudah diunduh sebelum melakukan reset.</p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-semibold mt-6 mb-3">Statistik Presensi:</h3>
+            <p>Memantau jumlah kehadiran, ketidakhadiran, dan keterlambatan secara real-time untuk membantu evaluasi partisipasi panitia.</p>
+
+            <div class="fixed top-4 left-4">
+                <a href="/Dashboard/admin.html" class="inline-block px-6 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 transition">Kembali ke Halaman Admin</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

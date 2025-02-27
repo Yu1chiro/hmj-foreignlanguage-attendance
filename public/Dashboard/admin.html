@@ -15,6 +15,9 @@
     <script defer type="module" src="/Dashboard/microcontroller/management.js"></script>
     <script defer type="module" src="/Auth/authservices/session.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script defer src="/Dashboard/microservices/intro.js"></script>
+    
+
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
         .font-family-karla { font-family: karla; }
@@ -25,14 +28,15 @@
         .active-nav-link { background: #1947ee; }
         .nav-item:hover { background: #1947ee; }
         .account-link:hover { background: #3d68ff; }
+        
     </style>
 </head>
 <body class="bg-gray-100 font-family-karla flex">
-
+ 
     <aside id="content" class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
             <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">DASHBOARD</a>
-            <a href="http://wa.me/6281236715460?text=hallo+websitenya+mengalami+error" class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+            <a id="reporting" href="http://wa.me/6281236715460?text=hallo+websitenya+mengalami+error" class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> New Report
             </a>
         </div>
@@ -41,6 +45,10 @@
                 <i class="fa-solid fa-house mr-3"></i>
                 Dashboard
             </a>
+            <a href="/Dashboard/readme.html" id="documentation" class="flex items-center  text-white py-4 pl-6 nav-item">
+                <i class="fa-solid fa-note-sticky mr-3"></i>
+                Dokumentasi
+            </a>
         </nav>
     </aside>
 
@@ -48,9 +56,9 @@
         <!-- Desktop Header -->
         <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
             <div class="w-1/2"></div>
-            <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
+            <div id="important" x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
                 <button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
-                    <img src="/Sources/logo.webp">
+                    <img  src="/Sources/logo.webp">
                 </button>
                 <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
                 <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
@@ -72,10 +80,14 @@
 
             <!-- Dropdown Nav -->
             <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-                <a href="" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
-                    <img src="/img/home.webp" width="30px" height="auto" class="mr-3" alt="">
-                     Dashboard
-                 </a>
+                <a href="/Dashboard/admin.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+                    <i class="fa-solid fa-house mr-3"></i>
+                    Dashboard
+                </a>
+                <a href="/Dashboard/readme.html" id="documentation" class="flex items-center  text-white py-4 pl-6 nav-item">
+                    <i class="fa-solid fa-note-sticky mr-3"></i>
+                    Dokumentasi
+                </a>
             </nav>
             
         </header>
@@ -87,10 +99,15 @@
                 <div class="mb-5">
                     <button type="button" id="open-presensi" class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Open Attendance</button>
                     <button type="button" id="delete-time" class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Close Attendance</button>
+                    <button type="button" id="add-location" class="text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Settings location</button>
+                    <button type="button" id="show-location" class="text-white  bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Show location</button>
+                    <button type="button" id="download" class="text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Download</button>
+                    <button type="button" id="remove-all-data" class="text-white  bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Reset</button>
+
                 </div>
                 <!-- LIS OF ATTENDANCE -->
                 <div class="w-full mt-3">
-                    <p class="text-xl pb-3 flex items-center">
+                    <p id="statistic-name" class="text-xl pb-3 flex items-center">
                         <i class="fas fa-list mr-3"></i> Attendance Stastic
                     </p>
                     <div class="bg-white overflow-auto rounded-lg">
@@ -100,18 +117,14 @@
                     </div>
                 </div>
                 <div class="w-full mt-3">
-                    <p class="text-xl pb-3 flex items-center">
+                    <p id="table-name" class="text-xl pb-3 flex items-center">
                         <i class="fas fa-list mr-3"></i> Attendance List
                     </p>
-                    <div class="mb-5">
-                        <button type="button" id="add-location" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Settings location</button>
-                        <button type="button" id="show-location" class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Show location</button>
-                    </div>
-                    <div class="mb-5">
-                        <button type="button" id="download" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Download</button>
-                        <button type="button" id="remove-all-data" class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Reset</button>
-                    </div>
-                    <div class="bg-white overflow-auto rounded-lg">
+                    <!-- <div class="mb-5">
+                        <button type="button" id="download" class="text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Download</button>
+                        <button type="button" id="remove-all-data" class="text-white  bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Reset</button>
+                    </div> -->
+                    <div  class="bg-white overflow-auto rounded-lg">
                         <table class="min-w-full bg-white">
                             <thead class="bg-gray-800 text-white">
                                 <tr>
