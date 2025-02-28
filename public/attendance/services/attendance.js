@@ -597,8 +597,8 @@ async function handleLateSubmission(e) {
             Swal.fire({
                 icon:'success',
                 html: `
-                    <h2 class="font-bold text-green-500 mb-2">Terkirim !</h2>
-                    <h2 class="font-bold text-green-500 mb-5">Next time jangan telat lagi ya dek ya</h2>
+                    <h2 class="font-bold text-green-500 mb-2">Thankyou !</h2>
+                    <h2 class="font-bold text-green-500 mb-5">Terimakasih sudah mengirimkan presensi</h2>
                      <a href="/Panitia/Presensi/daftar-kehadiran.html" class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-semibold rounded-lg text-sm px-5 py-2.5 text-center">
                     Cek presensi
                     </a>

@@ -147,11 +147,11 @@ async function handleOpenPresensi() {
         html: `
            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
     <h2 class="text-xl font-semibold text-gray-800 mb-4">Pilih Waktu</h2>
-    <form>
-      <label for="start-time" class="block text-gray-700 font-medium mb-2">Waktu Mulai</label>
+    <form id="time-container">
+      <label for="start-time" class="block text-gray-700 font-medium mb-2">Waktu Mulai Presensi : </label>
       <input id="start-time" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700" type="datetime-local">
 
-      <label for="end-time" class="block text-gray-700 font-medium mt-4 mb-2">Waktu Selesai</label>
+      <label for="end-time" class="block text-gray-700 font-medium mt-4 mb-2">Batas Waktu Pengisian :</label>
       <input id="end-time" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700" type="datetime-local">
     </form>
   </div>

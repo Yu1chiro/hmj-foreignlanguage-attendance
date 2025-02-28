@@ -4,3 +4,24 @@
 #hide-element {
     display:none;
 }
+.introjs-tooltip {
+    border-radius: 10px !important;
+}
+.introjs-nextbutton {
+    background-color: #00a63e!important;
+    text-shadow: none!important;
+    color: white!important;
+    font-weight: 500;
+}
+.introjs-prevbutton {
+    background-color: #3e7ff5!important;
+    text-shadow: none!important;
+    color: white!important;
+    font-weight: 500;
+}
+.introjs-button:focus {
+    border: 1px solid #015f23!important;
+}
+.introjs-bullets ul li a {
+    background: #00a63e!important;
+}
