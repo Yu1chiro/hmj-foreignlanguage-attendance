@@ -668,9 +668,9 @@ async function determineAttendanceStatus(position) {
         );
 
         return {
-            status: distance <= 1 ? 'Hadir' : 'Tidak Hadir',
+            status: distance <= 0.7 ? 'Hadir' : 'Tidak Hadir',
             distance: distance,
-            locationValid: distance <= 1
+            locationValid: distance <= 0.7
         };
     } catch (error) {
         console.error('Error getting location data:', error);
