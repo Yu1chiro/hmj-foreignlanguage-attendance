@@ -654,27 +654,23 @@ async function determineAttendanceStatus(position) {
     try {
         const locationRef = ref(database, 'location');
         const locationSnapshot = await get(locationRef);
-
+        
         if (!locationSnapshot.exists()) {
             throw new Error('Lokasi presensi belum diatur');
         }
 
         const locationData = locationSnapshot.val();
-
-        const userLatitude = position.coords.latitude;
-        const userLongitude = position.coords.longitude;
-        const targetLatitude = locationData.latitude;
-        const targetLongitude = locationData.longitude;
-
-        const tolerance = 0.00629; // ~700 meter dalam derajat
-
-        const isWithinLocation =
-            Math.abs(userLatitude - targetLatitude) <= tolerance &&
-            Math.abs(userLongitude - targetLongitude) <= tolerance;
+        const distance = calculateDistance(
+            position.coords.latitude,
+            position.coords.longitude,
+            locationData.latitude,
+            locationData.longitude
+        );
 
         return {
-            status: isWithinLocation ? 'Hadir' : 'Tidak Hadir',
-            locationValid: isWithinLocation
+            status: distance <= 1 ? 'Hadir' : 'Tidak Hadir',
+            distance: distance,
+            locationValid: distance <= 1
         };
     } catch (error) {
         console.error('Error getting location data:', error);
@@ -682,6 +678,21 @@ async function determineAttendanceStatus(position) {
     }
 }
 
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius bumi dalam kilometer
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a = 
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
+        Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
+}
+
+function toRad(degrees) {
+    return degrees * (Math.PI/180);
+}
 
 async function saveActivePresence(form, position, attendanceStatus) {
     const formData = {
