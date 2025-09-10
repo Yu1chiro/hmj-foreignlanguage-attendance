@@ -41,6 +41,34 @@ app.use(express.static(path.join(__dirname, 'public'), {
     });
   }
 }));
+// Ress redirect 
+// kalau user akses /attendance langsung redirect ke /attendance/attendance
+app.get('/attendance', (req, res) => {
+  res.redirect('/attendance/attendance');
+});
+
+// route ini yang kirim file html
+app.get('/attendance/attendance', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/attendance', 'attendance.html'));
+});
+// Auth route
+app.get('/sign', (req, res) => {
+  res.redirect('/Auth/sign');
+});
+
+// route ini yang kirim file html
+app.get('/Auth/sign', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/Auth', 'sign.html'));
+});
+// Admin route
+app.get('/admin', (req, res) => {
+  res.redirect('/Dashboard/admin');
+});
+
+// route ini yang kirim file html
+app.get('/Dashboard/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/Dashboard', 'admin.html'));
+});
 
 // Handler untuk rute yang tidak ditemukan - moved before app.listen()
 app.use((req, res) => {

@@ -70,7 +70,7 @@ getFirebaseConfig().then(firebaseConfig => {
         showConfirmButton: false,
         timer: 2000
       }).then(() => {
-        window.location.href = '/Dashboard/admin.html';
+        window.location.href = '/admin';
       });
 
     } catch (error) {

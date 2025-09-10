@@ -26,14 +26,14 @@ function handleAuthRedirect(user) {
     sessionStorage.setItem('isLoggedIn', 'true');
     
     // Jika user di halaman sign, redirect ke admin
-    if (currentPath === '/Auth/sign.html') {
-      window.location.href = '/Dashboard/admin.html';
+    if (currentPath === '/sign') {
+      window.location.href = '/admin';
       return;
     }
     
     // Jika user belum di area Dashboard, redirect ke admin
     if (!currentPath.startsWith('/Dashboard/')) {
-      window.location.href = '/Dashboard/admin.html';
+      window.location.href = '/admin';
       return;
     }
   } else {
@@ -41,8 +41,8 @@ function handleAuthRedirect(user) {
     sessionStorage.removeItem('isLoggedIn');
     
     // Jika user bukan di halaman sign, redirect ke sign
-    if (currentPath !== '/Auth/sign.html') {
-      window.location.href = '/Auth/sign.html';
+    if (currentPath !== '/sign') {
+      window.location.href = '/sign';
     }
   }
 }
@@ -82,7 +82,7 @@ getFirebaseConfig().then(firebaseConfig => {
       signOut(auth)
         .then(() => {
           sessionStorage.removeItem('isLoggedIn');
-          window.location.href = '/Auth/sign.html';
+          window.location.href = '/sign';
         })
         .catch((error) => {
           console.error('Logout error:', error);

@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.6.1",
     "express": "^4.21.2",
-    "firebase-admin": "^13.0.2"
+    "firebase-admin": "^13.5.0"
   },
   "name": "presensi-panitia2025",
   "type": "module",
